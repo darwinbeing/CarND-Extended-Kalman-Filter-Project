@@ -140,7 +140,7 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
       dt_3/2*noise_ax, 0, dt_2*noise_ax, 0,
       0, dt_3/2*noise_ay, 0, dt_2*noise_ay;
 
-  ekf_.Predict();
+  if (fabs(dt) >= 1e-3) ekf_.Predict();
 
   /*****************************************************************************
    *  Update
