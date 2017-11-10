@@ -57,6 +57,9 @@ void KalmanFilter::UpdateEKF(const VectorXd &z) {
   double vx = x_[2];
   double vy = x_[3];
 
+  if (fabs(px) < 1e-4) {
+      px = 1e-4;
+  }
   double rho = sqrt(px * px + py * py);
   if (fabs(rho) < 1e-4) {
       rho = 1e-4;
